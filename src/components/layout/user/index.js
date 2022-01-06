@@ -3,7 +3,7 @@ import TableUser from './data';
 import { loadUser } from '../../../Redux/action/userAction';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
+
 
 export default function Index() {
 
@@ -16,7 +16,7 @@ export default function Index() {
         return () => {
             isActive = false;
         }
-    }, [])
+    }, [dispatch])
     const { user } = useSelector(state => state.user)
 
     return (

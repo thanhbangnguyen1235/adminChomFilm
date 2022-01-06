@@ -16,7 +16,7 @@ export default function Index() {
         return () => {
             isActive = false;
         }
-    }, [])
+    }, [dispatch])
 
     const { film } = useSelector(state => state.film)
     return (

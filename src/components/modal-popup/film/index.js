@@ -26,11 +26,10 @@ const schema = yup.object().shape({
 });
 
 function ModalLogin(props) {
-    const { register, handleSubmit, formState } = useForm({
+    const { handleSubmit } = useForm({
         resolver: yupResolver(schema),
     });
-    const [errorTM, setErrorTM] = useState();
-    const { errors } = formState;
+
 
     const { open, setOpenEdit, id } = props;
 

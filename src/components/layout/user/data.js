@@ -110,7 +110,7 @@ export default function ColumnGroupingTable({ rows }) {
             axios.delete('https://chom-phim.herokuapp.com/admin/users/delete/' + username)
                 .then(res => {
                     console.log(res.data)
-                    if (res.data.message == 'Xóa tài khoản thành công') {
+                    if (res.data.message === 'Xóa tài khoản thành công') {
                         setDeleted(false);
                         setOpen(false);
                         window.location.reload();
@@ -126,7 +126,7 @@ export default function ColumnGroupingTable({ rows }) {
     const [focus, setFocus] = React.useState(false);
     const [name, setName] = React.useState("");
     const [searchUser, setsearchUser] = React.useState([]);
-    const [dataMoive, setDataMovie] = React.useState([]);
+
 
     const filter = (e) => {
         const keyword = e.target.value;
@@ -141,17 +141,6 @@ export default function ColumnGroupingTable({ rows }) {
         }
         setName(keyword);
     };
-    React.useEffect(() => {
-        if (!focus) {
-            if (searchUser) {
-                setDataMovie(searchUser)
-            }
-            else setDataMovie(rows)
-        }
-        else {
-            setDataMovie(rows)
-        }
-    }, [focus])
     return (
         <>
             <div className="wrap">
@@ -169,10 +158,10 @@ export default function ColumnGroupingTable({ rows }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title" style={{ display: 'flex' }}>
-                    Are you sure to delete user <p style={{ color: 'red', margin: 'auto', margin: '0px 4px', }}>{username}</p>?
+                    Are you sure to delete user <p style={{ color: 'red', margin: 'auto 4px', }}>{username}</p>?
                 </DialogTitle>
                 <DialogContent>
-                    {deleted == false ?
+                    {deleted === false ?
                         <DialogContentText id="alert-dialog-description">
                             Press Oke to complete delete, press Cancel to exit
                         </DialogContentText>

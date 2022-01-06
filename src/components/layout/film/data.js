@@ -108,7 +108,7 @@ export default function ColumnGroupingTable({ rows }) {
         setTimeout(() => {
             axios.delete('https://chom-phim.herokuapp.com/admin/delete/' + id)
                 .then(res => {
-                    if (res.data.message == 'xóa phim thành công') {
+                    if (res.data.message === 'xóa phim thành công') {
                         setDeleted(false);
                         setOpen(false);
                         window.location.reload();
@@ -139,7 +139,6 @@ export default function ColumnGroupingTable({ rows }) {
     const [focus, setFocus] = React.useState(false);
     const [name, setName] = React.useState("");
     const [searchMovieFound, setsearchMovieFound] = React.useState([]);
-    const [dataMoive, setDataMovie] = React.useState([]);
 
     const filter = (e) => {
         const keyword = e.target.value;
@@ -155,17 +154,6 @@ export default function ColumnGroupingTable({ rows }) {
         }
         setName(keyword);
     };
-    React.useEffect(() => {
-        if (!focus) {
-            if (searchMovieFound) {
-                setDataMovie(searchMovieFound)
-            }
-            else setDataMovie(rows)
-        }
-        else {
-            setDataMovie(rows)
-        }
-    }, [focus])
 
     return (
         <>
@@ -185,7 +173,7 @@ export default function ColumnGroupingTable({ rows }) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title" style={{ display: 'flex' }}>
-                    Are you sure to delete film <p style={{ color: 'red', margin: 'auto', margin: '0px 4px', }}>{idFilm}</p>?
+                    Are you sure to delete film <p style={{ color: 'red', margin: 'auto 4px', }}>{idFilm}</p>?
                 </DialogTitle>
                 <DialogContent>
                     {deleted === false ?
